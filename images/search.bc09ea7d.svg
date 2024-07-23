@@ -1,0 +1,16 @@
+<svg
+    id="search"
+    xmlns="http://www.w3.org/2000/svg"
+    width="inherit"
+    height="inherit"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+      <path
+        stroke="#7E7E7E"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm10 2-4.35-4.35"
+      />
+  </svg>
