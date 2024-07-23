@@ -1,0 +1,68 @@
+extends @views/layouts/default.pug
+include @views/mixins/svg
+include @views/components/sidebar/mixins
+include @views/components/badge/mixins
+include @views/components/pagination/mixins
+append variables
+  - var user = {
+  - name: 'Evano',
+  - role: 'Project Manager',
+  - img: "user_img.png"
+  - }
+  - var tableData = {
+  -   head: [
+  -    {id: "customer_name", title: "Customer Name"}, {id: "company", title: "Company"}, {id: "phone", title: "Phone Number"}, {id: 'email', title: "Email"}, {id: "country", title: "Country"},{id: "status", title: "Status"}
+  -   ], 
+  -   data: [
+  -   {customer_name: "Jane Cooper", company: "Microsoft", phone: "(225) 555-0118", email: "jane@microsoft.com", country: "United States", status: true},
+  -   {customer_name: "Floyd Miles", company: "Yahoo", phone: "(205) 555-0100", email: "floyd@yahoo.com", country: "Kiribati", status: false},
+  -   {customer_name: "Ronald Richards", company: "Adobe", phone: "(302) 555-0107", email: "ronald@adobe.com", country: "Israel", status: false},
+  -   {customer_name: "Marvin McKinney", company: "Tesla", phone: "(252) 555-0126", email: "marvin@tesla.com", country: "Iran", status: true},
+  -   {customer_name: "Jerome Bell", company: "Google", phone: "(629) 555-0129", email: "jerome@google.com", country: "Réunion", status: true},
+  -   {customer_name: "Kathryn Murphy", company: "Microsoft", phone: "(406) 555-0120", email: "kathryn@microsoft.com", country: "Curaçao", status: true},
+  -   {customer_name: "Jacob Jones", company: "Yahoo", phone: "(208) 555-0112", email: "jacob@yahoo.com", country: "Brazil", status: true},
+  -   {customer_name: "Kristin Watson", company: "Facebook", phone: "(704) 555-0127", email: "kristin@facebook.com", country: "Åland Islands", status: false},
+  -   ]
+  - }
+
+append style
+  link(rel='stylesheet' href='./style.scss')
+
+block content
+  main.main
+    +sidebar("Customers", user)
+    .content-wrapper
+      h2.page-title Hello #{user.name}
+        span.page-title__emoji 👋🏼
+        | ,
+      section.customer-table 
+        .customer-table__search
+          div  
+            h3.customer-table__title All Customers
+            a.customer-table__link(href="#") Active Members
+          .customer-table__input-block
+            input.customer-table__input(placeholder="Search")
+        div.table-wrapper
+          table.customer-table__table
+            thead.customer-table__head
+              tr
+                each title in tableData.head
+                  th.customer-table__col-title(scope="col", id=`${title.id}`)= title.title
+            tbody.customer-table__body
+              each row in tableData.data
+                tr 
+                  each key in tableData.head
+                    case key.id
+                      when "status"
+                        td.customer-table__row-item
+                          +badge(row[key.id])
+                      when "phone"
+                        td.customer-table__row-item 
+                          a.customer-table__item-link(href=`tel:${row[key.id]}`)= row[key.id]
+                      when "email"
+                        td.customer-table__row-item
+                          a.customer-table__item-link(href=`mailto:${row[key.id]}`)= row[key.id]
+                      default 
+                        td.customer-table__row-item= row[key.id]
+        +pagination(1,257,8)
+

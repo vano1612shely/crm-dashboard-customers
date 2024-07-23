@@ -1,0 +1,44 @@
+mixin sidebar(currentPage, user)
+  - var menuList = [
+  -    {title: "Dashboard", link: "#", iconKey: "key", showArrow: false},
+  -    {title: "Product", link: "#", iconKey: "box", showArrow: true},
+  -    {title: "Customers", link: "#", iconKey: "user", showArrow: true},
+  -    {title: "Income", link: "#", iconKey: "wallet", showArrow: true},
+  -    {title: "Promote", link: "#", iconKey: "discount", showArrow: true},
+  -    {title: "Help", link: "#", iconKey: "message", showArrow: true}
+  -    ]
+  .sidebar-wrapper
+    aside.sidebar
+      .logo
+        a.logo__link
+          img.logo__img(src="@images/logo.svg", alt="logo image")
+          h1.logo__title 
+            | Dashboard
+            span v.01
+      nav.menu 
+          ul.menu__list 
+            each item in menuList
+              li
+                a.menu__item(
+                  href=`${item.link}`,
+                  class=currentPage == item.title ? "menu__item_active": "")
+                  +svg(`${item.iconKey}`, 'menu__img')
+                  p.menu__text= item.title
+                  if item.showArrow 
+                    +svg(`arrowRight`, 'menu__arrow')
+      a.user(href="#") 
+        img.user__img(src=`@images/${user.img}`)
+        div.user__info
+          h3.user__name= user.name
+          span.user__role= user.role
+      button.sidebar__button 
+        | Open menu
+        svg.sidebar__burger-img(viewBox="0 0 12 10",
+        xmlns="http://www.w3.org/2000/svg")
+          g
+            path.hamburger__upper(d="M10,2 L2,2",
+            style="fill: none; stroke: inherit; stroke-linecap: round")
+            path.hamburger__middle(d="M2,5 L10,5",
+            style="fill: none; stroke: inherit; stroke-linecap: round")
+            path.hamburger__lower(d="M10,8 L2,8",
+            style="fill: none; stroke: inherit; stroke-linecap: round")

@@ -1,0 +1,6 @@
+mixin badge(value)
+  .badge(class=value===true ? "badge_active" : "")
+    if value === true
+      | Active
+    else
+      | Inactive

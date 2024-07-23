@@ -1,0 +1,5 @@
+<svg viewBox="0 0 12 10" class="hamburger" height="100px" width="120px" xmlns="http://www.w3.org/2000/svg"> 
+  <path d="M10,2 L2,2" class="hamburger__upper" style="fill: none;stroke: #000;stroke-linecap: round;"/>
+  <path d="M2,5 L10,5" class="hamburger__middle" style="fill: none;stroke: #000;stroke-linecap: round;"/>
+  <path d="M10,8 L2,8" class="hamburger__lower" style="fill: none;stroke: #000;stroke-linecap: round;"/>   
+</svg>

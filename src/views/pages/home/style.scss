@@ -1,0 +1,132 @@
+@use "@styles/global";
+@use "@styles/var";
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+}
+
+.content-wrapper {
+  width: 60.5rem;
+  overflow-x: auto;
+  margin: auto;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  &__emoji {
+    display: block;
+  }
+}
+
+.customer-table {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  &__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.6rem;
+  }
+  &__title {
+    font-size: 1.375rem;
+    font-weight: 600;
+  }
+  &__link {
+    color: var.$green-1;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+  &__input {
+    padding: 0.75rem 0.5rem 0.75rem 2.5rem;
+    border: none;
+    border-radius: 0.625rem;
+    width: 100%;
+  }
+  &__input::placeholder {
+    font-size: 0.75rem;
+    color: var.$gray-3;
+  }
+  &__input-block {
+    width: clamp(200px, 13.5rem, 13.5rem);
+    position: relative;
+  }
+  &__input-block::before {
+    content: "";
+    background-color: var.$gray-4;
+    -webkit-mask-image: url("@images/search.svg");
+    mask-image: url("@images/search.svg");
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    left: 0.6rem;
+    top: 0.438rem;
+  }
+
+  &__table {
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  &__col-title,
+  &__row-item {
+    border-bottom: 1px solid var.$border;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var.$gray-3;
+  }
+  &__col-title {
+    padding: 0.875rem;
+  }
+  &__row-item {
+    padding: 1.15rem 0.75rem;
+    color: var.$dark;
+  }
+  &__col-title:first-child,
+  &__row-item:first-child {
+    padding-left: 0;
+  }
+  &__col-title:last-child,
+  &__row-item:last-child {
+    padding-right: 0;
+  }
+  &__item-link {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+@media (max-width: 1120px) {
+  .main {
+    flex-direction: column;
+  }
+  .content-wrapper {
+    width: 100%;
+    padding: 1.5rem;
+    margin: 0;
+    gap: 1.5rem;
+  }
+  .customer-table {
+    padding: 0;
+    &__search {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    &__table {
+      width: 60.5rem;
+    }
+    &__row-item {
+      padding: 0.75rem;
+    }
+  }
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+}

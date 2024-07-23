@@ -1,0 +1,13 @@
+mixin pagination(page, rowsCount, perPage)
+  - var pages = Math.ceil(rowsCount/perPage)
+  - var buttonsCount = 4
+  - var i = 0
+  .pagination 
+    p.pagination__text Showing data #{page !== 1 ? page*perPage - perPage: 1} to #{page*perPage} of #{rowsCount} entries
+    .pagination__controls
+      button.pagination__button.pagination__prev(disabled=page===1?true:false) <
+      while i < buttonsCount
+        button.pagination__button(class=i===0?"pagination__button_selected":"") #{page+i++}
+      span ...
+      button.pagination__button #{pages}
+      button.pagination__button.pagination__next(disabled=page===pages?true:false) >
